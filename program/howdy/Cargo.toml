@@ -1,0 +1,6 @@
+[package]
+name = "howdy"
+version = "0.1.0"
+authors = ["sin <ogasawaraShinnosuke@users.noreply.github.com>"]
+
+[dependencies]
