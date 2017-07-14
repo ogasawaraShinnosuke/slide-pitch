@@ -1,13 +1,21 @@
 ### こんにちは！
 
-
-これはサンプルのスライド資料です。
-
+Rust lang...
 
 ---
 
+### なに
 
-### 2枚目のスライド
+並列かつマルチパラダイムのプログラミング言語
+Mozilla Foundationが開発している
+
+- 同時に複数の処理を演算可能
+   - Javaだと、最近では `ParallelStream` などがある。今はほとんど見ることがない `Thread` という懐かしいものもそれに該当する。
+
+### いつでてきたか
+
+Rust 1.0が日本時間の2015年5月16日にリリース
+※ [Wikipedia](https://ja.wikipedia.org/wiki/Rust_(%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E8%A8%80%E8%AA%9E))
 
 <canvas data-chart="radar">
 
@@ -19,15 +27,23 @@
 
 </canvas>
 
-
-
 ---
 
 
-### 3枚目のスライド
+### オブジェクト
 
+Impl
+Trait
+Struct
 
+※継承なんてそもそも使わない
 ---
 
 
-### おわり
+### サンプルコード
+
+``` rs
+fn main() {
+    println!("hello, world");
+}
+```
