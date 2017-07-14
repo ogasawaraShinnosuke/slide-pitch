@@ -2,6 +2,8 @@
 
 Rust lang...
 
+超雑に紹介＆ハンズオン
+
 ---
 
 ### なに
@@ -43,14 +45,130 @@ Struct
 
 ※継承なんてそもそも使わない
 
+---
+
+### パッケージ管理は？
+
+- Cargo というものがやる
+      - Rustのビルドシステム
+      - Rustのパッケージマネージャ
+      - Rustのプロジェクト管理
+      - Javaで言うと，GradleとかMavenみたいなものと考えるとよいかも
+      
+---
+
+### ハンズオン
+
+やってみる
+
 
 ---
 
+### インストール
 
-### サンプルコード
+**only Mac OS**
+
+``` sh
+brew install rust
+rustc -V
+cargo -V
+```
+
+---
+
+### プロジェクトつくる
+
+``` sh
+cd
+mkdir -p workspace/rust
+cd workspace/rust
+cargo new howdy --bin
+cd howdy
+```
+
+---
+
+### Cargo.toml
+
+``` toml
+[package]
+name = "howdy"
+version = "0.1.0"
+authors = ["sin <ogasawaraShinnosuke@users.noreply.github.com>"]
+
+[dependencies]
+```
+dependenciesってとこに追加ライブラリをかいていく
+
+---
+
+### src/main.rs
 
 ``` rs
 fn main() {
-    println!("hello, world");
+    println!("Hello, world!");
 }
 ```
+
+こちらがbinのプログラムとなる
+
+---
+
+### びるど
+
+``` shell
+$ cargo build
+   Compiling howdy v0.1.0 (file:///Users/ogasawarasusumunosuke/workspace/rust/howdy)
+    Finished dev [unoptimized + debuginfo] target(s) in 1.47 secs
+```
+
+まずは，ビルドしましょう．基本この作業で依存関係も解決してくれます
+
+---
+
+### 中身
+
+``` shell
+tree
+.
+├── Cargo.lock
+├── Cargo.toml
+├── src
+│   └── main.rs
+└── target
+    └── debug
+        ├── build
+        ├── deps
+        │   ├── howdy-fe9f25f571817acc
+        │   └── howdy-fe9f25f571817acc.dSYM
+        │       └── Contents
+        │           ├── Info.plist
+        │           └── Resources
+        │               └── DWARF
+        │                   └── howdy-fe9f25f571817acc
+        ├── examples
+        ├── howdy
+        ├── howdy.d
+        ├── incremental
+        └── native
+
+12 directories, 8 files
+```
+
+--- 
+
+### うごかす
+
+``` shell
+$ cargo run
+    Finished dev [unoptimized + debuginfo] target(s) in 0.0 secs
+     Running `target/debug/howdy`
+Hello, world!
+```
+
+さきほどのmain.rsが起動しました．target/debug直下にあるコンパイルされたものが動きます
+
+--- 
+
+
+--- 
