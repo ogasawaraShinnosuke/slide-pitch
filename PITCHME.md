@@ -20,7 +20,18 @@ Rust lang...
 ### いつでてきたか
 
 - Rust 1.0が日本時間の2015年5月16日にリリース
-    - ※ [Wikipedia](https://ja.wikipedia.org/wiki/Rust_(%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E8%A8%80%E8%AA%9E))
+    - ※ [Wikipedia](https://ja.wikipedia.org/wiki/Rust_%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E8%A8%80%E8%AA%9E)
+
+---
+
+### 実績ってあるの？
+
+- npm
+- mozilla
+- Dropbox
+- Chef
+
+他にもいろいろと [ここに](https://github.com/rust-lang/rust-www/tree/master/user-logos) のっている
 
 ---
 
@@ -122,6 +133,8 @@ $ cargo build
     Finished dev [unoptimized + debuginfo] target(s) in 1.47 secs
 ```
 
+Cargo.lockというのが依存関係を追跡するものです．
+
 まずは，ビルドしましょう．基本この作業で依存関係も解決してくれます
 
 ---
@@ -170,5 +183,88 @@ Hello, world!
 
 --- 
 
+### ちょっと変えてみる
+
+src/main.rs
+
+``` rs
+use std::io;
+
+fn main() {
+  println!("please input message.");
+  let mut input = String::new();
+  io::stdin().read_line(&mut input).expect("failed");
+  println!("input={}, input);
+}
+```
+
+文法きそ
+
+---
+
+### 変数束縛
+
+- 値を変える時は，イミュータブルにする必要がある
+- シャドーイング
+
+``` rs
+fn main() {
+  variable_sample(100, 5, 0);
+}
+
+fn variable_sample(x: i32, y: i32, z: i32) {
+  if x >= 100 {
+    println!("invalid number, x < 100 is valid.");
+  } else if x <= 10 {
+    println!("invalid number, x >= 11 is valid.");
+  }
+  
+  println!("z={}", z);
+  {
+    let mut z = 0;
+    println!("z={}", z);
+    z = 10;
+    println!("z={}", z);
+  }
+  println!("x={}, y={}", x, y, z);  
+}
+```
 
 --- 
+
+### サンプル
+
+``` rs
+fn main() {
+  println!("answer={}", plus_number_100(4, 5));
+}
+
+fn plus_number_100(x: i32, y: i32) -> i32 { x + y + 100}
+
+```
+
+- 型
+- enum
+- match
+
+--- 
+
+### 数値型
+
+``` shell
+i8
+i16
+i32
+i64
+u8
+u16
+u32
+u64
+isize
+usize
+f32
+f64
+```
+
+---
+
